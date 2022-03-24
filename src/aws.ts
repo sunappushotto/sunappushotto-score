@@ -5,7 +5,13 @@ const cb = '12';
 
 let client;
 const region = process.env.AWS_REGION;
-if (region) client = new AWS.S3({ region });
+const endpoint = process.env.AWS_ENDPOINT;
+if (region) client = new AWS.S3({
+  apiVersion: '2006-03-01',
+  s3ForcePathStyle: true,
+  region,
+  endpoint,
+});
 
 async function streamToString(stream: Readable): Promise<string> {
   return await new Promise((resolve, reject) => {
