@@ -23,7 +23,7 @@ router.get('/strategies', (req, res) => {
 router.post('/scores', async (req, res) => {
   const { params = {} } = req.body || {};
   const requestId = req.headers['x-request-id'];
-  const { space = '', network = '1', snapshot = 'latest', addresses = [] } = params;
+  const { space = '', network = '10000', snapshot = 'latest', addresses = [] } = params;
   let { strategies = [] } = params;
   // strategy parameters should be same order to maintain consistent key hashes
   strategies = Array.isArray(strategies) ? strategies.map(sortObjectByParam) : [];
